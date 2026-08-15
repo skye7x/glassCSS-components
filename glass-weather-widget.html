@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Weather Widget</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(160deg, #2e6bb8, #10182b 75%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .weather {
+    position: relative; width: 240px; padding: 24px; border-radius: 24px;
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); color: #fff;
+    text-align: center; overflow: hidden;
+  }
+  .weather::before {
+    content: ""; position: absolute; inset: 0; padding: 1px; border-radius: 24px;
+    background: linear-gradient(-15deg, rgba(255,255,255,0.1) 11%, rgba(255,255,255,0.28) 60%, rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .weather svg { width: 48px; height: 48px; margin-bottom: 8px; }
+  .temp { font-size: 42px; font-weight: 300; margin-bottom: 2px; }
+  .loc { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .desc { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+  .lohi { display: flex; justify-content: center; gap: 16px; font-size: 12px; color: rgba(255,255,255,0.7); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
+</style>
+</head>
+<body>
+  <div class="weather">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fde68a" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    <div class="temp">27°</div>
+    <div class="loc">Paphos, Cyprus</div>
+    <div class="desc">Clear skies</div>
+    <div class="lohi"><span>H: 30°</span><span>L: 21°</span></div>
+  </div>
+</body>
+</html>

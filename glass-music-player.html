@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Music Player</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 70% 30%, #4a3a6e, #14121f 70%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .player {
+    position: relative; width: 300px; padding: 18px; border-radius: 22px;
+    background: rgba(255,255,255,0.07); backdrop-filter: blur(20px); overflow: hidden;
+  }
+  .player::before {
+    content: ""; position: absolute; inset: 0; padding: 1px; border-radius: 22px;
+    background: linear-gradient(-15deg, rgba(255,255,255,0.08) 11%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .top { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .art { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #f472b6, #60a5fa); flex-shrink: 0; }
+  .meta h4 { margin: 0 0 2px; color: #fff; font-size: 14px; }
+  .meta p { margin: 0; color: rgba(255,255,255,0.5); font-size: 12px; }
+  .bar { height: 4px; border-radius: 999px; background: rgba(255,255,255,0.2); margin-bottom: 14px; position: relative; }
+  .bar .fill { position: absolute; left: 0; top: 0; height: 100%; width: 45%; border-radius: 999px; background: #fff; }
+  .buttons { display: flex; align-items: center; justify-content: center; gap: 22px; }
+  .buttons svg { width: 18px; height: 18px; fill: #fff; cursor: pointer; }
+  .buttons .play { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .buttons .play svg { fill: #1a1a1a; width: 16px; height: 16px; margin-left: 2px; }
+</style>
+</head>
+<body>
+  <div class="player">
+    <div class="top">
+      <div class="art"></div>
+      <div class="meta"><h4>Midnight Drive</h4><p>Nova Wave</p></div>
+    </div>
+    <div class="bar"><div class="fill"></div></div>
+    <div class="buttons">
+      <svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"></polygon><rect x="5" y="4" width="2" height="16"></rect></svg>
+      <div class="play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+      <svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"></polygon><rect x="17" y="4" width="2" height="16"></rect></svg>
+    </div>
+  </div>
+</body>
+</html>

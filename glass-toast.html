@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Toast</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 60px;
+    background: #17191f; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .toast {
+    position: relative; display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border-radius: 16px; background: rgba(20,20,26,0.6);
+    backdrop-filter: blur(20px); box-shadow: 0 14px 34px rgba(0,0,0,0.4); overflow: hidden;
+  }
+  .toast::before {
+    content: ""; position: absolute; inset: 0; padding: 1px; border-radius: 16px;
+    background: linear-gradient(-15deg, rgba(255,255,255,0.08) 11%, rgba(255,255,255,0.22) 60%, rgba(255,255,255,0.9) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .toast .ic {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    background: #60a5fa; display: flex; align-items: center; justify-content: center;
+  }
+  .toast .ic svg { width: 16px; height: 16px; }
+  .toast .body h4 { margin: 0 0 2px; font-size: 13px; color: #fff; }
+  .toast .body p { margin: 0; font-size: 12px; color: rgba(255,255,255,0.6); }
+  .toast .close { margin-left: 10px; color: rgba(255,255,255,0.4); font-size: 16px; cursor: pointer; }
+</style>
+</head>
+<body>
+  <div class="toast">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="8" x2="12" y2="13"></line><circle cx="12" cy="16.5" r="0.5" fill="white"></circle></svg></div>
+    <div class="body"><h4>New update available</h4><p>Version 2.4 is ready to install</p></div>
+    <span class="close">×</span>
+  </div>
+</body>
+</html>

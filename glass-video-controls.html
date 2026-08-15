@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Video Controls</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=60') center/cover;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .controls {
+    position: relative; width: 380px; display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; border-radius: 999px; background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(20px); overflow: hidden;
+  }
+  .controls::before {
+    content: ""; position: absolute; inset: 0; padding: 1px; border-radius: 999px;
+    background: linear-gradient(-15deg, rgba(255,255,255,0.1) 11%, rgba(255,255,255,0.25) 60%, rgba(255,255,255,1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .controls svg { width: 18px; height: 18px; stroke: #fff; fill: none; cursor: pointer; flex-shrink: 0; }
+  .play { width: 34px; height: 34px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; }
+  .play svg { fill: #1a1a1a; stroke: none; width: 14px; height: 14px; margin-left: 2px; }
+  .bar { flex: 1; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.25); position: relative; }
+  .bar .fill { position: absolute; left: 0; top: 0; height: 100%; width: 38%; border-radius: 999px; background: #fff; }
+  .time { color: rgba(255,255,255,0.8); font-size: 11px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+  <div class="controls">
+    <svg viewBox="0 0 24 24" stroke-width="2"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+    <div class="play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+    <svg viewBox="0 0 24 24" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+    <div class="bar"><div class="fill"></div></div>
+    <span class="time">1:24</span>
+  </div>
+</body>
+</html>
